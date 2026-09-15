@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodBook - Delicious Food, Easy Booking</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                Food<span>Book</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="assistant.html">AI Assistant</a>
+                <a href="orders.html">My Orders</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="login-link">Login</a>
+                <a href="register.html" class="btn btn-primary">
+                    Sign Up
+                </a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+
+    <!-- Hero -->
+    <main>
+
+        <section class="hero">
+
+            <div class="container hero-container">
+
+                <div class="hero-content">
+
+                    <span class="hero-badge">
+                        🍽️ Your food, your way
+                    </span>
+
+                    <h1>
+                        Delicious food.
+                        <span>Easy booking.</span>
+                    </h1>
+
+                    <p>
+                        Discover delicious meals, order your favorites,
+                        and manage your bookings all in one place.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="menu.html" class="btn btn-primary btn-large">
+                            Explore Menu
+                        </a>
+
+                        <a href="assistant.html" class="btn btn-secondary btn-large">
+                            Ask AI Assistant
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-image">
+
+                    <div class="food-placeholder">
+                        🍛
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Categories -->
+        <section class="categories section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span>Explore</span>
+
+                    <h2>What are you craving?</h2>
+
+                    <p>
+                        Find something delicious from our food categories.
+                    </p>
+
+                </div>
+
+
+                <div class="category-grid">
+
+                    <a href="menu.html?category=rice" class="category-card">
+                        <div class="category-icon">🍚</div>
+                        <h3>Rice</h3>
+                        <p>Delicious rice meals</p>
+                    </a>
+
+                    <a href="menu.html?category=swallow" class="category-card">
+                        <div class="category-icon">🥣</div>
+                        <h3>Swallow</h3>
+                        <p>Traditional favorites</p>
+                    </a>
+
+                    <a href="menu.html?category=fast-food" class="category-card">
+                        <div class="category-icon">🍔</div>
+                        <h3>Fast Food</h3>
+                        <p>Quick and tasty</p>
+                    </a>
+
+                    <a href="menu.html?category=drinks" class="category-card">
+                        <div class="category-icon">🥤</div>
+                        <h3>Drinks</h3>
+                        <p>Refreshing drinks</p>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Popular Foods -->
+        <section class="popular section">
+
+            <div class="container">
+
+                <div class="section-heading-row">
+
+                    <div class="section-heading">
+                        <span>Popular</span>
+                        <h2>Customer favorites</h2>
+                    </div>
+
+                    <a href="menu.html" class="view-all">
+                        View all →
+                    </a>
+
+                </div>
+
+
+                <div class="food-grid">
+
+                    <article class="food-card">
+
+                        <div class="food-image">
+                            🍛
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                Nigerian
+                            </span>
+
+                            <h3>Jollof Rice</h3>
+
+                            <p>
+                                Delicious Nigerian-style jollof rice.
+                            </p>
+
+                            <div class="food-bottom">
+
+                                <strong>
+                                    ₦2,500
+                                </strong>
+
+                                <a href="food.html?id=1"
+                                   class="btn btn-small">
+                                    Order
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="food-card">
+
+                        <div class="food-image">
+                            🍗
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                Chicken
+                            </span>
+
+                            <h3>Grilled Chicken</h3>
+
+                            <p>
+                                Tender and perfectly grilled chicken.
+                            </p>
+
+                            <div class="food-bottom">
+
+                                <strong>
+                                    ₦3,500
+                                </strong>
+
+                                <a href="food.html?id=2"
+                                   class="btn btn-small">
+                                    Order
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="food-card">
+
+                        <div class="food-image">
+                            🍝
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                Pasta
+                            </span>
+
+                            <h3>Special Pasta</h3>
+
+                            <p>
+                                Creamy pasta prepared fresh.
+                            </p>
+
+                            <div class="food-bottom">
+
+                                <strong>
+                                    ₦3,000
+                                </strong>
+
+                                <a href="food.html?id=3"
+                                   class="btn btn-small">
+                                    Order
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI Assistant CTA -->
+        <section class="ai-section section">
+
+            <div class="container">
+
+                <div class="ai-card">
+
+                    <div class="ai-content">
+
+                        <span class="hero-badge">
+                            🤖 Smart Food Assistant
+                        </span>
+
+                        <h2>
+                            Not sure what to eat?
+                        </h2>
+
+                        <p>
+                            Tell our AI assistant what you're craving,
+                            your budget, or your preferences and get
+                            personalized food recommendations.
+                        </p>
+
+                        <a href="assistant.html"
+                           class="btn btn-light">
+                            Talk to AI Assistant
+                        </a>
+
+                    </div>
+
+                    <div class="ai-icon">
+                        🤖
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo">
+                    Food<span>Book</span>
+                </a>
+
+                <p>
+                    Delicious food, easy booking.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="menu.html">Menu</a>
+                <a href="assistant.html">AI Assistant</a>
+                <a href="orders.html">Orders</a>
+                <a href="profile.html">Profile</a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; 2026 FoodBook. All rights reserved.
+            </p>
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
