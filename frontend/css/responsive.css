@@ -1,0 +1,127 @@
+/* =========================================
+   FOODBOOK - RESPONSIVE STYLES
+   ========================================= */
+
+
+/* ---------- TABLETS ---------- */
+
+@media (max-width: 900px) {
+
+    .nav-links,
+    .nav-actions {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .hero-content {
+        margin: 0 auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-image {
+        order: -1;
+    }
+
+    .food-placeholder {
+        width: 300px;
+        height: 300px;
+        font-size: 120px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-card {
+        text-align: center;
+        flex-direction: column;
+    }
+
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: min(100% - 30px, var(--container));
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .food-placeholder {
+        width: 240px;
+        height: 240px;
+        font-size: 95px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading-row {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .ai-card {
+        padding: 35px 25px;
+    }
+
+    .ai-content h2 {
+        font-size: 30px;
+    }
+
+    .ai-icon {
+        font-size: 90px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+    }
+
+}
