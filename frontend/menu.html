@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menu - FoodBook</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                Food<span>Book</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="menu.html" class="active">
+                    Menu
+                </a>
+
+                <a href="assistant.html">
+                    AI Assistant
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+            </nav>
+
+            <div class="nav-actions">
+
+                <a href="login.html" class="login-link">
+                    Login
+                </a>
+
+                <a href="register.html" class="btn btn-primary">
+                    Sign Up
+                </a>
+
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- Menu Header -->
+
+        <section class="menu-header">
+
+            <div class="container">
+
+                <div class="menu-header-content">
+
+                    <span class="hero-badge">
+                        🍽️ Our Menu
+                    </span>
+
+                    <h1>
+                        Find something delicious
+                    </h1>
+
+                    <p>
+                        Explore our meals and find something
+                        perfect for you.
+                    </p>
+
+                </div>
+
+
+                <!-- Search -->
+
+                <div class="food-search">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="search"
+                        id="foodSearch"
+                        placeholder="Search for food..."
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Menu -->
+
+        <section class="menu-section section">
+
+            <div class="container">
+
+
+                <!-- Categories -->
+
+                <div class="menu-filters">
+
+                    <button
+                        class="filter-btn active"
+                        data-category="all"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="filter-btn"
+                        data-category="rice"
+                    >
+                        🍚 Rice
+                    </button>
+
+                    <button
+                        class="filter-btn"
+                        data-category="swallow"
+                    >
+                        🥣 Swallow
+                    </button>
+
+                    <button
+                        class="filter-btn"
+                        data-category="chicken"
+                    >
+                        🍗 Chicken
+                    </button>
+
+                    <button
+                        class="filter-btn"
+                        data-category="pasta"
+                    >
+                        🍝 Pasta
+                    </button>
+
+                    <button
+                        class="filter-btn"
+                        data-category="drinks"
+                    >
+                        🥤 Drinks
+                    </button>
+
+                </div>
+
+
+                <!-- Food Grid -->
+
+                <div
+                    class="food-grid menu-food-grid"
+                    id="foodGrid"
+                >
+
+
+                    <!-- Food 1 -->
+
+                    <article
+                        class="food-card"
+                        data-category="rice"
+                        data-name="jollof rice"
+                    >
+
+                        <div class="food-image">
+                            🍛
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                Rice
+                            </span>
+
+                            <h3>
+                                Jollof Rice
+                            </h3>
+
+                            <p>
+                                Delicious Nigerian-style
+                                jollof rice.
+                            </p>
+
+                            <div class="food-bottom">
+
+                                <strong>
+                                    ₦2,500
+                                </strong>
+
+                                <a
+                                    href="food.html?id=1"
+                                    class="btn btn-small"
+                                >
+                                    View
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Food 2 -->
+
+                    <article
+                        class="food-card"
+                        data-category="chicken"
+                        data-name="grilled chicken"
+                    >
+
+                        <div class="food-image">
+                            🍗
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                Chicken
+                            </span>
+
+                            <h3>
+                                Grilled Chicken
+                            </h3>
+
+                            <p>
+                                Tender and perfectly
+                                grilled chicken.
+                            </p>
+
+                            <div class="food-bottom">
+
+                                <strong>
+                                    ₦3,500
+                                </strong>
+
+                                <a
+                                    href="food.html?id=2"
+                                    class="btn btn-small"
+                                >
+                                    View
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Food 3 -->
+
+                    <article
+                        class="food-card"
+                        data-category="pasta"
+                        data-name="special pasta"
+                    >
+
+                        <div class="food-image">
+                            🍝
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                Pasta
+                            </span>
+
+                            <h3>
+                                Special Pasta
+                            </h3>
+
+                            <p>
+                                Creamy pasta prepared fresh.
+                            </p>
+
+                            <div class="food-bottom">
+
+                                <strong>
+                                    ₦3,000
+                                </strong>
+
+                                <a
+                                    href="food.html?id=3"
+                                    class="btn btn-small"
+                                >
+                                    View
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Food 4 -->
+
+                    <article
+                        class="food-card"
+                        data-category="swallow"
+                        data-name="pounded yam"
+                    >
+
+                        <div class="food-image">
+                            🥣
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                Swallow
+                            </span>
+
+                            <h3>
+                                Pounded Yam & Egusi
+                            </h3>
+
+                            <p>
+                                Soft pounded yam with
+                                delicious egusi soup.
+                            </p>
+
+                            <div class="food-bottom">
+
+                                <strong>
+                                    ₦3,500
+                                </strong>
+
+                                <a
+                                    href="food.html?id=4"
+                                    class="btn btn-small"
+                                >
+                                    View
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Food 5 -->
+
+                    <article
+                        class="food-card"
+                        data-category="rice"
+                        data-name="fried rice"
+                    >
+
+                        <div class="food-image">
+                            🍚
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                Rice
+                            </span>
+
+                            <h3>
+                                Fried Rice
+                            </h3>
+
+                            <p>
+                                Special fried rice with
+                                vegetables and chicken.
+                            </p>
+
+                            <div class="food-bottom">
+
+                                <strong>
+                                    ₦3,000
+                                </strong>
+
+                                <a
+                                    href="food.html?id=5"
+                                    class="btn btn-small"
+                                >
+                                    View
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Food 6 -->
+
+                    <article
+                        class="food-card"
+                        data-category="drinks"
+                        data-name="fresh juice"
+                    >
+
+                        <div class="food-image">
+                            🥤
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                Drinks
+                            </span>
+
+                            <h3>
+                                Fresh Fruit Juice
+                            </h3>
+
+                            <p>
+                                Refreshing natural fruit juice.
+                            </p>
+
+                            <div class="food-bottom">
+
+                                <strong>
+                                    ₦1,500
+                                </strong>
+
+                                <a
+                                    href="food.html?id=6"
+                                    class="btn btn-small"
+                                >
+                                    View
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- No Results -->
+
+                <div
+                    id="noResults"
+                    class="no-results hidden"
+                >
+
+                    <div>
+                        🔍
+                    </div>
+
+                    <h3>
+                        No food found
+                    </h3>
+
+                    <p>
+                        Try another search or category.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo">
+                    Food<span>Book</span>
+                </a>
+
+                <p>
+                    Delicious food, easy booking.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="menu.html">
+                    Menu
+                </a>
+
+                <a href="assistant.html">
+                    AI Assistant
+                </a>
+
+                <a href="orders.html">
+                    Orders
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; 2026 FoodBook. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+
+</body>
+</html>

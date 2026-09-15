@@ -1,0 +1,311 @@
+/* =========================================
+   FOODBOOK - MENU
+   ========================================= */
+
+
+/* ---------- MENU HEADER ---------- */
+
+.menu-header {
+    background: var(--background);
+
+    padding: 65px 0 50px;
+}
+
+.menu-header-content {
+    text-align: center;
+}
+
+.menu-header-content h1 {
+    font-size: clamp(35px, 5vw, 52px);
+
+    line-height: 1.1;
+
+    margin-bottom: 15px;
+}
+
+.menu-header-content p {
+    color: var(--text);
+
+    max-width: 550px;
+
+    margin: 0 auto 30px;
+}
+
+
+/* ---------- SEARCH ---------- */
+
+.food-search {
+    width: min(100%, 650px);
+
+    margin: 0 auto;
+
+    position: relative;
+}
+
+.food-search input {
+    width: 100%;
+
+    padding: 17px 20px 17px 50px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50px;
+
+    background: var(--white);
+
+    outline: none;
+
+    font-size: 15px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.food-search input:focus {
+    border-color: var(--primary);
+}
+
+.search-icon {
+    position: absolute;
+
+    left: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 1;
+}
+
+
+/* ---------- FILTERS ---------- */
+
+.menu-filters {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    overflow-x: auto;
+
+    padding-bottom: 10px;
+
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    flex-shrink: 0;
+
+    border: 1px solid var(--border);
+
+    background: var(--white);
+
+    color: var(--text);
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+
+    color: var(--primary);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: var(--white);
+}
+
+
+/* ---------- MENU GRID ---------- */
+
+.menu-food-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+/* ---------- NO RESULTS ---------- */
+
+.no-results {
+    text-align: center;
+
+    padding: 70px 20px;
+}
+
+.no-results > div {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+}
+
+.no-results h3 {
+    font-size: 24px;
+
+    margin-bottom: 5px;
+}
+
+.no-results p {
+    color: var(--text);
+}
+
+/* ---------- FOOD DETAILS ---------- */
+
+.food-back {
+    display: inline-block;
+
+    margin-bottom: 30px;
+}
+
+.food-detail {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.food-detail-image {
+    min-height: 500px;
+
+    border-radius: var(--radius-large);
+
+    background: #fff0e5;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.food-detail-image div {
+    font-size: 180px;
+}
+
+.food-detail-content {
+    max-width: 550px;
+}
+
+.food-detail-content h1 {
+    font-size: 48px;
+
+    line-height: 1.1;
+
+    margin: 10px 0;
+}
+
+.food-rating {
+    color: #f4a261;
+
+    margin-bottom: 20px;
+}
+
+.food-rating span {
+    color: var(--text);
+
+    margin-left: 8px;
+}
+
+.food-description {
+    color: var(--text);
+
+    font-size: 16px;
+
+    margin-bottom: 25px;
+}
+
+.food-price {
+    font-size: 32px;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+}
+
+.quantity-section {
+    margin-bottom: 25px;
+}
+
+.quantity-section label {
+    display: block;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.quantity-control {
+    display: inline-flex;
+
+    align-items: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+.quantity-control button {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+
+    background: var(--light);
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.quantity-control button:hover {
+    background: #ffe8d6;
+}
+
+.quantity-control span {
+    width: 50px;
+
+    text-align: center;
+
+    font-weight: 600;
+}
+
+.order-summary {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 18px 0;
+
+    margin-bottom: 20px;
+
+    border-top: 1px solid var(--border);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.order-summary strong {
+    font-size: 22px;
+}
+
+.order-btn {
+    width: 100%;
+}

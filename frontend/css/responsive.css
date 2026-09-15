@@ -125,3 +125,40 @@
     }
 
 }
+
+/* ---------- FOOD DETAILS ---------- */
+
+@media (max-width: 900px) {
+
+    .food-detail {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .food-detail-image {
+        min-height: 350px;
+    }
+
+    .food-detail-content {
+        max-width: none;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .food-detail-image {
+        min-height: 280px;
+    }
+
+    .food-detail-image div {
+        font-size: 120px;
+    }
+
+    .food-detail-content h1 {
+        font-size: 38px;
+    }
+
+}

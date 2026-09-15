@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Food Details - FoodBook</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+<body>
+
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                Food<span>Book</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="menu.html" class="active">
+                    Menu
+                </a>
+
+                <a href="assistant.html">
+                    AI Assistant
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+            </nav>
+
+            <div class="nav-actions">
+
+                <a href="login.html" class="login-link">
+                    Login
+                </a>
+
+                <a
+                    href="register.html"
+                    class="btn btn-primary"
+                >
+                    Sign Up
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="food-detail-section section">
+
+            <div class="container">
+
+                <a
+                    href="menu.html"
+                    class="back-link food-back"
+                >
+                    ← Back to Menu
+                </a>
+
+
+                <div class="food-detail">
+
+                    <!-- Image -->
+
+                    <div class="food-detail-image">
+
+                        <div>
+                            🍛
+                        </div>
+
+                    </div>
+
+
+                    <!-- Information -->
+
+                    <div class="food-detail-content">
+
+                        <span class="food-category">
+                            Nigerian Cuisine
+                        </span>
+
+                        <h1>
+                            Jollof Rice
+                        </h1>
+
+                        <div class="food-rating">
+                            ⭐⭐⭐⭐⭐
+                            <span>
+                                4.8
+                            </span>
+                        </div>
+
+                        <p class="food-description">
+                            Enjoy delicious Nigerian-style
+                            jollof rice prepared with carefully
+                            selected ingredients and served fresh.
+                        </p>
+
+
+                        <div class="food-price">
+                            ₦2,500
+                        </div>
+
+
+                        <div class="quantity-section">
+
+                            <label>
+                                Quantity
+                            </label>
+
+                            <div class="quantity-control">
+
+                                <button
+                                    type="button"
+                                    id="decreaseQuantity"
+                                >
+                                    −
+                                </button>
+
+                                <span id="quantity">
+                                    1
+                                </span>
+
+                                <button
+                                    type="button"
+                                    id="increaseQuantity"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="order-summary">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong id="totalPrice">
+                                ₦2,500
+                            </strong>
+
+                        </div>
+
+
+                        <a
+                            href="booking.html?food=1"
+                            class="btn btn-primary btn-large order-btn"
+                        >
+                            Order Now
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo">
+                    Food<span>Book</span>
+                </a>
+
+                <p>
+                    Delicious food, easy booking.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="menu.html">
+                    Menu
+                </a>
+
+                <a href="assistant.html">
+                    AI Assistant
+                </a>
+
+                <a href="orders.html">
+                    Orders
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; 2026 FoodBook. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
