@@ -63,22 +63,26 @@ def main():
 
     print("Customer:", customer.name)
     print("Phone:", customer.phone)
-    
+
 
     booking_date = input("Enter booking date: ")
     booking_time = input("Enter booking time: ")
 
-    booking = create_booking(
-        customer,
-        food,
-        quantity,
-        booking_date,
-        booking_time
-    )
+    booking, error = create_booking(
+    customer,
+    food,
+    quantity,
+    booking_date,
+    booking_time
+)
 
-    if booking is None:
-        print("Invalid booking information")
+    if error:
+        print(error)
         return
+
+        if booking is None:
+            print("Invalid booking information")
+            return
 
     print("Booking created successfully")
     print("Customer:", booking.customer.name)
