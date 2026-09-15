@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Orders - FoodBook</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/orders.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+
+<body>
+
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                Food<span>Book</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="menu.html">
+                    Menu
+                </a>
+
+                <a href="assistant.html">
+                    AI Assistant
+                </a>
+
+                <a href="orders.html" class="active">
+                    My Orders
+                </a>
+
+            </nav>
+
+            <div class="nav-actions">
+
+                <a href="profile.html" class="login-link">
+                    Profile
+                </a>
+
+                <a
+                    href="menu.html"
+                    class="btn btn-primary"
+                >
+                    Order Food
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="orders-section section">
+
+            <div class="container">
+
+
+                <div class="orders-header">
+
+                    <div>
+
+                        <span class="hero-badge">
+                            📦 Your Orders
+                        </span>
+
+                        <h1>
+                            My Orders
+                        </h1>
+
+                        <p>
+                            Track and manage your food orders.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="menu.html"
+                        class="btn btn-primary"
+                    >
+                        + Order Food
+                    </a>
+
+                </div>
+
+
+                <!-- Current Order -->
+
+                <section class="orders-group">
+
+                    <h2>
+                        Current Order
+                    </h2>
+
+
+                    <article class="order-history-card">
+
+                        <div class="order-card-top">
+
+                            <div>
+
+                                <span class="order-number">
+                                    Order #FB-1001
+                                </span>
+
+                                <span class="order-date">
+                                    Today, 11:30 AM
+                                </span>
+
+                            </div>
+
+                            <span class="order-status status-preparing">
+                                Preparing
+                            </span>
+
+                        </div>
+
+
+                        <div class="order-card-body">
+
+                            <div class="order-history-food">
+
+                                <div class="history-food-image">
+                                    🍛
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Jollof Rice
+                                    </h3>
+
+                                    <p>
+                                        Quantity: 2
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="order-price">
+
+                                <span>
+                                    Total
+                                </span>
+
+                                <strong>
+                                    ₦5,500
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="order-progress">
+
+                            <div class="progress-step completed">
+
+                                <span>
+                                    ✓
+                                </span>
+
+                                <small>
+                                    Ordered
+                                </small>
+
+                            </div>
+
+
+                            <div class="progress-line completed"></div>
+
+
+                            <div class="progress-step active">
+
+                                <span>
+                                    2
+                                </span>
+
+                                <small>
+                                    Preparing
+                                </small>
+
+                            </div>
+
+
+                            <div class="progress-line"></div>
+
+
+                            <div class="progress-step">
+
+                                <span>
+                                    3
+                                </span>
+
+                                <small>
+                                    Ready
+                                </small>
+
+                            </div>
+
+
+                            <div class="progress-line"></div>
+
+
+                            <div class="progress-step">
+
+                                <span>
+                                    4
+                                </span>
+
+                                <small>
+                                    Delivered
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- Previous Orders -->
+
+                <section class="orders-group">
+
+                    <h2>
+                        Previous Orders
+                    </h2>
+
+
+                    <article class="order-history-card">
+
+                        <div class="order-card-top">
+
+                            <div>
+
+                                <span class="order-number">
+                                    Order #FB-0998
+                                </span>
+
+                                <span class="order-date">
+                                    September 13, 2026
+                                </span>
+
+                            </div>
+
+                            <span class="order-status status-delivered">
+                                Delivered
+                            </span>
+
+                        </div>
+
+
+                        <div class="order-card-body">
+
+                            <div class="order-history-food">
+
+                                <div class="history-food-image">
+                                    🍗
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Grilled Chicken
+                                    </h3>
+
+                                    <p>
+                                        Quantity: 1
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="order-price">
+
+                                <span>
+                                    Total
+                                </span>
+
+                                <strong>
+                                    ₦4,000
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="order-history-card">
+
+                        <div class="order-card-top">
+
+                            <div>
+
+                                <span class="order-number">
+                                    Order #FB-0992
+                                </span>
+
+                                <span class="order-date">
+                                    September 10, 2026
+                                </span>
+
+                            </div>
+
+                            <span class="order-status status-delivered">
+                                Delivered
+                            </span>
+
+                        </div>
+
+
+                        <div class="order-card-body">
+
+                            <div class="order-history-food">
+
+                                <div class="history-food-image">
+                                    🍝
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Special Pasta
+                                    </h3>
+
+                                    <p>
+                                        Quantity: 2
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="order-price">
+
+                                <span>
+                                    Total
+                                </span>
+
+                                <strong>
+                                    ₦6,500
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo">
+                    Food<span>Book</span>
+                </a>
+
+                <p>
+                    Delicious food, easy booking.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="menu.html">
+                    Menu
+                </a>
+
+                <a href="assistant.html">
+                    AI Assistant
+                </a>
+
+                <a href="orders.html">
+                    Orders
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; 2026 FoodBook. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

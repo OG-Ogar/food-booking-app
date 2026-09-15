@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Book Food - FoodBook</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/booking.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                Food<span>Book</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="menu.html">
+                    Menu
+                </a>
+
+                <a href="assistant.html">
+                    AI Assistant
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+            </nav>
+
+            <div class="nav-actions">
+
+                <a href="login.html" class="login-link">
+                    Login
+                </a>
+
+                <a
+                    href="register.html"
+                    class="btn btn-primary"
+                >
+                    Sign Up
+                </a>
+
+            </div>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- Booking -->
+
+    <main>
+
+        <section class="booking-section section">
+
+            <div class="container">
+
+                <div class="booking-heading">
+
+                    <a
+                        href="menu.html"
+                        class="back-link"
+                    >
+                        ← Back to Menu
+                    </a>
+
+                    <h1>
+                        Complete Your Order
+                    </h1>
+
+                    <p>
+                        Review your order and provide
+                        your delivery details.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="bookingMessage"
+                    class="message hidden"
+                >
+                </div>
+
+
+                <form
+                    id="bookingForm"
+                    class="booking-layout"
+                >
+
+
+                    <!-- LEFT -->
+
+                    <div class="booking-main">
+
+
+                        <!-- Customer Information -->
+
+                        <div class="booking-card">
+
+                            <div class="booking-card-header">
+
+                                <span class="step-number">
+                                    1
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        Customer Information
+                                    </h2>
+
+                                    <p>
+                                        Where should we deliver
+                                        your order?
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="customerName">
+                                        Full Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="customerName"
+                                        class="form-control"
+                                        placeholder="Your full name"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="customerPhone">
+                                        Phone Number
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="customerPhone"
+                                        class="form-control"
+                                        placeholder="08012345678"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="deliveryAddress">
+                                    Delivery Address
+                                </label>
+
+                                <textarea
+                                    id="deliveryAddress"
+                                    class="form-control"
+                                    rows="3"
+                                    placeholder="Enter your delivery address"
+                                    required
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Delivery Method -->
+
+                        <div class="booking-card">
+
+                            <div class="booking-card-header">
+
+                                <span class="step-number">
+                                    2
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        Delivery Method
+                                    </h2>
+
+                                    <p>
+                                        Choose how you want
+                                        to receive your order.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="delivery-options">
+
+
+                                <label class="delivery-option">
+
+                                    <input
+                                        type="radio"
+                                        name="deliveryMethod"
+                                        value="delivery"
+                                        checked
+                                    >
+
+                                    <span class="delivery-option-content">
+
+                                        <span class="delivery-icon">
+                                            🛵
+                                        </span>
+
+                                        <span>
+
+                                            <strong>
+                                                Delivery
+                                            </strong>
+
+                                            <small>
+                                                Delivered to your address
+                                            </small>
+
+                                        </span>
+
+                                    </span>
+
+                                </label>
+
+
+                                <label class="delivery-option">
+
+                                    <input
+                                        type="radio"
+                                        name="deliveryMethod"
+                                        value="pickup"
+                                    >
+
+                                    <span class="delivery-option-content">
+
+                                        <span class="delivery-icon">
+                                            🏪
+                                        </span>
+
+                                        <span>
+
+                                            <strong>
+                                                Pickup
+                                            </strong>
+
+                                            <small>
+                                                Pick up your order
+                                            </small>
+
+                                        </span>
+
+                                    </span>
+
+                                </label>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Notes -->
+
+                        <div class="booking-card">
+
+                            <div class="booking-card-header">
+
+                                <span class="step-number">
+                                    3
+                                </span>
+
+                                <div>
+
+                                    <h2>
+                                        Additional Notes
+                                    </h2>
+
+                                    <p>
+                                        Anything we should know?
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <textarea
+                                    id="orderNotes"
+                                    class="form-control"
+                                    rows="4"
+                                    placeholder="Example: Please make it spicy..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RIGHT -->
+
+                    <aside class="booking-sidebar">
+
+
+                        <div class="booking-card order-card">
+
+                            <h2>
+                                Your Order
+                            </h2>
+
+
+                            <div class="order-food">
+
+                                <div class="order-food-image">
+                                    🍛
+                                </div>
+
+                                <div>
+
+                                    <h3>
+                                        Jollof Rice
+                                    </h3>
+
+                                    <span>
+                                        ₦2,500
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="booking-quantity">
+
+                                <span>
+                                    Quantity
+                                </span>
+
+                                <div class="quantity-control">
+
+                                    <button
+                                        type="button"
+                                        id="decreaseBookingQuantity"
+                                    >
+                                        −
+                                    </button>
+
+                                    <span id="bookingQuantity">
+                                        1
+                                    </span>
+
+                                    <button
+                                        type="button"
+                                        id="increaseBookingQuantity"
+                                    >
+                                        +
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="price-breakdown">
+
+                                <div>
+
+                                    <span>
+                                        Subtotal
+                                    </span>
+
+                                    <strong id="subtotal">
+                                        ₦2,500
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Delivery
+                                    </span>
+
+                                    <strong id="deliveryFee">
+                                        ₦500
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="order-total">
+
+                                <span>
+                                    Total
+                                </span>
+
+                                <strong id="bookingTotal">
+                                    ₦3,000
+                                </strong>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-large confirm-order-btn"
+                                id="confirmOrderButton"
+                            >
+                                Confirm Order
+                            </button>
+
+                        </div>
+
+                    </aside>
+
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo">
+                    Food<span>Book</span>
+                </a>
+
+                <p>
+                    Delicious food, easy booking.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="menu.html">
+                    Menu
+                </a>
+
+                <a href="assistant.html">
+                    AI Assistant
+                </a>
+
+                <a href="orders.html">
+                    Orders
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; 2026 FoodBook. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+
+</body>
+
+</html>

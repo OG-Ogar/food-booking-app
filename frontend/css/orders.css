@@ -1,0 +1,247 @@
+/* =========================================
+   FOODBOOK - ORDERS
+   ========================================= */
+
+.orders-section {
+    background: var(--background);
+    min-height: 80vh;
+}
+
+.orders-header {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 45px;
+}
+
+.orders-header h1 {
+    font-size: 42px;
+
+    margin: 10px 0 5px;
+}
+
+.orders-header p {
+    color: var(--text);
+}
+
+.orders-group {
+    margin-bottom: 45px;
+}
+
+.orders-group > h2 {
+    font-size: 24px;
+
+    margin-bottom: 18px;
+}
+
+
+/* ---------- ORDER CARD ---------- */
+
+.order-history-card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-large);
+
+    padding: 25px;
+
+    margin-bottom: 18px;
+}
+
+.order-card-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.order-number {
+    display: block;
+
+    font-weight: 700;
+
+    margin-bottom: 4px;
+}
+
+.order-date {
+    color: var(--light-text);
+
+    font-size: 13px;
+}
+
+
+/* ---------- STATUS ---------- */
+
+.order-status {
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.status-preparing {
+    background: #fff0e5;
+
+    color: var(--primary);
+}
+
+.status-delivered {
+    background: #e8f5e9;
+
+    color: var(--success);
+}
+
+
+/* ---------- BODY ---------- */
+
+.order-card-body {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 0;
+}
+
+.order-history-food {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.history-food-image {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 10px;
+
+    background: #fff0e5;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+}
+
+.order-history-food h3 {
+    font-size: 17px;
+
+    margin-bottom: 3px;
+}
+
+.order-history-food p {
+    color: var(--light-text);
+
+    font-size: 13px;
+}
+
+.order-price {
+    text-align: right;
+}
+
+.order-price span {
+    display: block;
+
+    color: var(--light-text);
+
+    font-size: 13px;
+}
+
+.order-price strong {
+    font-size: 20px;
+}
+
+
+/* ---------- PROGRESS ---------- */
+
+.order-progress {
+    display: flex;
+
+    align-items: flex-start;
+
+    width: 100%;
+
+    padding-top: 20px;
+}
+
+.progress-step {
+    text-align: center;
+
+    min-width: 70px;
+}
+
+.progress-step span {
+    width: 30px;
+    height: 30px;
+
+    margin: 0 auto 7px;
+
+    border-radius: 50%;
+
+    background: #eeeeee;
+
+    color: #999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.progress-step small {
+    display: block;
+
+    color: var(--light-text);
+
+    font-size: 11px;
+}
+
+.progress-step.completed span,
+.progress-step.active span {
+    background: var(--primary);
+
+    color: var(--white);
+}
+
+.progress-step.active small {
+    color: var(--primary);
+
+    font-weight: 700;
+}
+
+.progress-line {
+    flex: 1;
+
+    height: 2px;
+
+    background: #eeeeee;
+
+    margin-top: 14px;
+}
+
+.progress-line.completed {
+    background: var(--primary);
+}
