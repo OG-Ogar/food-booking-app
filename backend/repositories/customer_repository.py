@@ -1,3 +1,4 @@
+from models.customer import Customer
 from database.connection import get_connection
 
 
@@ -17,11 +18,19 @@ def create_customer(name, phone):
                 (name, phone)
             )
 
-            customer = cursor.fetchone()
+            customer_data = cursor.fetchone()
 
         connection.commit()
 
-        return customer
+        if customer_data is None:
+            return None
+
+        return Customer(
+            customer_data[0],
+            customer_data[1],
+            customer_data[2],
+            customer_data[3]
+        )
 
     finally:
         connection.close()

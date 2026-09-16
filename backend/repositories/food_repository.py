@@ -1,14 +1,34 @@
 from models.food import Food
+from database.connection import get_connection
 
 
 def get_foods():
 
-    foods = [
-        Food(1, "Jollof Rice", 2500, "Nigerian Food", 10),
-        Food(2, "Fried Rice", 3000, "Nigerian Food", 5),
-        Food(3, "Pizza", 5000, "Fast Food", 3),
-        Food(4, "Burger", 3500, "Fast Food", 0),
-        Food(5, "Chicken", 4000, "Protein", 8)
-    ]
+    connection = get_connection()
 
-    return foods
+    try:
+        with connection.cursor() as cursor:
+
+            cursor.execute(
+                """
+                SELECT id, name, price, category, quantity
+                FROM foods
+                ORDER BY id;
+                """
+            )
+
+            food_data = cursor.fetchall()
+
+        return [
+            Food(
+                food[0],
+                food[1],
+                food[2],
+                food[3],
+                food[4]
+            )
+            for food in food_data
+        ]
+
+    finally:
+        connection.close()

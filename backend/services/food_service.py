@@ -57,18 +57,3 @@ def check_quantity(food, quantity):
         return f"Only {food.quantity} {food.name} available"
 
     return "Valid"
-
-
-    print("Quantity selected:", quantity)
-
-    customer_name = input("Enter your name: ")
-    customer_phone = input("Enter your phone number: ")
-
-    customer = create_customer(customer_name, customer_phone)
-
-    if customer is None:
-        print("Invalid customer information")
-        return
-
-    print("Customer:", customer.name)
-    print("Phone:", customer.phone)

@@ -34,6 +34,7 @@ def create_booking(customer, food, quantity, booking_date, booking_time):
         return None, "Booking date cannot be in the past."
 
     booking = Booking(
+        None,
         customer,
         food,
         quantity,
@@ -41,6 +42,9 @@ def create_booking(customer, food, quantity, booking_date, booking_time):
         booking_time
     )
 
-    save_booking(booking)
+    saved_booking = save_booking(booking)
 
-    return booking, None
+    if saved_booking is None:
+        return None, "Booking could not be created"
+
+    return saved_booking, None
