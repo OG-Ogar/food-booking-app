@@ -1,6 +1,15 @@
 from datetime import datetime
+
 from models.booking import Booking
-from repositories.booking_repository import save_booking
+
+from repositories.booking_repository import (
+    save_booking,
+    get_bookings_by_customer,
+    get_booking_by_id,
+    confirm_booking as confirm_booking_repository,
+    cancel_booking as cancel_booking_repository,
+    complete_booking as complete_booking_repository
+)
 
 
 def create_booking(customer, food, quantity, booking_date, booking_time):
@@ -48,3 +57,64 @@ def create_booking(customer, food, quantity, booking_date, booking_time):
         return None, "Booking could not be created"
 
     return saved_booking, None
+
+
+def get_customer_bookings(customer_id):
+
+    if customer_id is None:
+        return None, "Customer ID is required"
+
+    if customer_id <= 0:
+        return None, "Invalid customer ID"
+
+    bookings = get_bookings_by_customer(customer_id)
+
+    return bookings, None
+
+
+def confirm_booking(booking_id):
+
+    if booking_id is None:
+        return None, "Booking ID is required"
+
+    if booking_id <= 0:
+        return None, "Invalid booking ID"
+
+    return confirm_booking_repository(booking_id)
+
+
+def cancel_booking(booking_id):
+
+    if booking_id is None:
+        return None, "Booking ID is required"
+
+    if booking_id <= 0:
+        return None, "Invalid booking ID"
+
+    return cancel_booking_repository(booking_id)
+
+
+def complete_booking(booking_id):
+
+    if booking_id is None:
+        return None, "Booking ID is required"
+
+    if booking_id <= 0:
+        return None, "Invalid booking ID"
+
+    return complete_booking_repository(booking_id)
+
+def get_booking(booking_id):
+
+    if booking_id is None:
+        return None, "Booking ID is required"
+
+    if booking_id <= 0:
+        return None, "Invalid booking ID"
+
+    booking = get_booking_by_id(booking_id)
+
+    if booking is None:
+        return None, "Booking not found"
+
+    return booking, None

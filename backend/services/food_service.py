@@ -48,6 +48,9 @@ def select_food(results, selection):
 
 def check_quantity(food, quantity):
 
+    if food is None:
+        return "Food selection is required"
+
     # Quantity must be greater than zero
     if quantity <= 0:
         return "Quantity must be greater than zero"
