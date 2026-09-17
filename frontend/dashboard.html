@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - FoodBook</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🍽️ FoodBook
+    </div>
+
+    <button class="menu-toggle" id="menuToggle">
+        ☰
+    </button>
+
+    <nav id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="orders.html">My Orders</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="profile.html">Profile</a>
+    </nav>
+
+</header>
+
+
+<main class="dashboard">
+
+    <!-- Welcome -->
+
+    <section class="dashboard-welcome">
+
+        <div>
+            <p class="welcome-label">Welcome back 👋</p>
+
+            <h1>Hello, <span id="customerName">Samuel</span>!</h1>
+
+            <p>
+                Manage your orders, account and food preferences
+                from your dashboard.
+            </p>
+        </div>
+
+        <a href="menu.html" class="primary-btn">
+            Order Food
+        </a>
+
+    </section>
+
+
+    <!-- Statistics -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon">🛒</div>
+
+            <div>
+                <span>Total Orders</span>
+                <strong id="totalOrders">12</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon">🚚</div>
+
+            <div>
+                <span>Active Orders</span>
+                <strong id="activeOrders">2</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon">❤️</div>
+
+            <div>
+                <span>Favorite Foods</span>
+                <strong id="favoriteFoods">5</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon">💰</div>
+
+            <div>
+                <span>Total Spent</span>
+                <strong id="totalSpent">₦42,500</strong>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Dashboard Content -->
+
+    <section class="dashboard-content">
+
+        <!-- Recent Orders -->
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Recent Orders</h2>
+                    <p>Your latest food orders</p>
+                </div>
+
+                <a href="orders.html">View All</a>
+
+            </div>
+
+
+            <div class="recent-orders">
+
+                <div class="recent-order">
+
+                    <div class="order-food">
+                        <div class="food-icon">🍚</div>
+
+                        <div>
+                            <h3>Jollof Rice & Chicken</h3>
+                            <p>Order #FB1024</p>
+                        </div>
+                    </div>
+
+                    <div class="order-info">
+                        <strong>₦4,500</strong>
+                        <span class="status delivered">
+                            Delivered
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="recent-order">
+
+                    <div class="order-food">
+                        <div class="food-icon">🍝</div>
+
+                        <div>
+                            <h3>Spaghetti</h3>
+                            <p>Order #FB1023</p>
+                        </div>
+                    </div>
+
+                    <div class="order-info">
+                        <strong>₦3,000</strong>
+                        <span class="status preparing">
+                            Preparing
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="recent-order">
+
+                    <div class="order-food">
+                        <div class="food-icon">🍗</div>
+
+                        <div>
+                            <h3>Grilled Chicken</h3>
+                            <p>Order #FB1022</p>
+                        </div>
+                    </div>
+
+                    <div class="order-info">
+                        <strong>₦5,500</strong>
+                        <span class="status delivered">
+                            Delivered
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Quick Actions -->
+
+        <div class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Quick Actions</h2>
+                    <p>Manage your account</p>
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+                <a href="menu.html" class="quick-action">
+                    <span>🍽️</span>
+                    <div>
+                        <strong>Browse Menu</strong>
+                        <small>Find something delicious</small>
+                    </div>
+                </a>
+
+
+                <a href="orders.html" class="quick-action">
+                    <span>📦</span>
+                    <div>
+                        <strong>My Orders</strong>
+                        <small>Track your orders</small>
+                    </div>
+                </a>
+
+
+                <a href="profile.html" class="quick-action">
+                    <span>👤</span>
+                    <div>
+                        <strong>Edit Profile</strong>
+                        <small>Update your information</small>
+                    </div>
+                </a>
+
+
+                <a href="assistant.html" class="quick-action">
+                    <span>🤖</span>
+                    <div>
+                        <strong>AI Assistant</strong>
+                        <small>Get food recommendations</small>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>© 2026 FoodBook. All rights reserved.</p>
+</footer>
+
+
+<script src="js/main.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

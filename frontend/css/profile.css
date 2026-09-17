@@ -1,0 +1,208 @@
+.profile-page {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 40px 20px;
+}
+
+
+.profile-header {
+    margin-bottom: 30px;
+}
+
+.profile-header p {
+    margin: 0 0 5px;
+
+    font-size: 14px;
+}
+
+.profile-header h1 {
+    margin: 0 0 8px;
+
+    font-size: 32px;
+}
+
+.profile-header span {
+    font-size: 14px;
+}
+
+
+/* Layout */
+
+.profile-layout {
+    display: grid;
+
+    grid-template-columns: 280px 1fr;
+
+    gap: 25px;
+
+    align-items: start;
+}
+
+
+/* Cards */
+
+.profile-card {
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #eee;
+
+    border-radius: 14px;
+}
+
+
+/* Summary */
+
+.profile-summary {
+    text-align: center;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #f1f1f1;
+
+    font-size: 36px;
+
+    font-weight: bold;
+}
+
+.profile-summary h2 {
+    margin: 10px 0 8px;
+}
+
+.profile-summary p {
+    margin: 6px 0;
+
+    font-size: 14px;
+}
+
+
+/* Logout */
+
+.logout-btn {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+/* Card header */
+
+.profile-card-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.profile-card-header h2 {
+    margin: 0 0 5px;
+}
+
+.profile-card-header p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* Form */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    font: inherit;
+}
+
+.form-group input:disabled,
+.form-group textarea:disabled {
+    background: #f7f7f7;
+
+    cursor: not-allowed;
+}
+
+
+/* Buttons */
+
+.secondary-btn {
+    padding: 10px 18px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+}
+
+
+/* Message */
+
+.profile-message {
+    margin-top: 15px;
+
+    font-size: 14px;
+}
+
+.hidden {
+    display: none !important;
+}

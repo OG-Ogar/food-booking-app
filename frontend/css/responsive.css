@@ -240,3 +240,79 @@
     }
 
 }
+
+/* Dashboard */
+
+@media (max-width: 900px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard {
+        padding: 25px 15px;
+    }
+
+    .dashboard-welcome {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 25px;
+    }
+
+    .dashboard-welcome h1 {
+        font-size: 26px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recent-order {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .order-info {
+        text-align: right;
+    }
+
+
+    .profile-page {
+        padding: 25px 15px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-card-header {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Profile - FoodBook</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        🍽️ FoodBook
+    </div>
+
+    <button class="menu-toggle" id="menuToggle">
+        ☰
+    </button>
+
+    <nav id="navMenu">
+
+        <a href="index.html">Home</a>
+
+        <a href="menu.html">Menu</a>
+
+        <a href="orders.html">My Orders</a>
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="profile.html" class="active">
+            Profile
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="profile-page">
+
+    <div class="profile-header">
+
+        <div>
+
+            <p>Account</p>
+
+            <h1>My Profile</h1>
+
+            <span>
+                Manage your personal information
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <section class="profile-layout">
+
+        <!-- Profile summary -->
+
+        <div class="profile-card profile-summary">
+
+            <div class="avatar">
+                S
+            </div>
+
+            <h2 id="profileName">
+                Samuel Akilozi
+            </h2>
+
+            <p id="profileEmail">
+                samuel@example.com
+            </p>
+
+            <p id="profilePhone">
+                +234 800 000 0000
+            </p>
+
+            <button
+                type="button"
+                id="logoutBtn"
+                class="logout-btn"
+            >
+                Logout
+            </button>
+
+        </div>
+
+
+        <!-- Profile form -->
+
+        <div class="profile-card">
+
+            <div class="profile-card-header">
+
+                <div>
+
+                    <h2>Personal Information</h2>
+
+                    <p>
+                        Update your account information.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="editBtn"
+                    class="secondary-btn"
+                >
+                    Edit
+                </button>
+
+            </div>
+
+
+            <form id="profileForm">
+
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        value="Samuel Akilozi"
+                        disabled
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        value="samuel@example.com"
+                        disabled
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        value="+234 800 000 0000"
+                        disabled
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        Delivery Address
+                    </label>
+
+                    <textarea
+                        id="address"
+                        disabled
+                        rows="4"
+                    >Otukpo, Benue State, Nigeria</textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="cancelBtn"
+                        class="secondary-btn hidden"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="saveBtn"
+                        class="primary-btn hidden"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+            <div
+                id="profileMessage"
+                class="profile-message"
+            ></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 FoodBook. All rights reserved.
+    </p>
+
+</footer>
+
+
+<script src="js/main.js"></script>
+<script src="js/profile.js"></script>
+
+</body>
+</html>
