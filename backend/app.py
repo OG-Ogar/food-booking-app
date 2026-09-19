@@ -2,7 +2,8 @@ from services.food_service import (
     search_food,
     check_availability,
     select_food,
-    check_quantity
+    check_quantity,
+    get_customer_bookings
 )
 
 from services.customer_service import get_or_create_customer
@@ -13,7 +14,39 @@ from services.booking_service import (
     cancel_booking
 )
 
-def run():
+def view_customer_bookings(customer):
+
+    bookings, error = get_customer_bookings(customer.id)
+
+    if error:
+        print(error)
+        return
+
+    if not bookings:
+        print("No bookings found")
+        return
+
+    print("\nYour bookings:")
+
+    for booking in bookings:
+
+        print("\nBooking ID:", booking.id)
+        print("Food:", booking.food.name)
+        print("Quantity:", booking.quantity)
+        print("Date:", booking.booking_date)
+        print("Time:", booking.booking_time)
+        print("Status:", booking.status)
+
+def show_menu():
+
+    print("\nFood Booking System")
+    print("1. Book food")
+    print("2. View my bookings")
+    print("3. Exit")
+
+    return input("Choose an option: ").strip()
+
+def book_food():
 
     search = input("Enter food name: ")
 
@@ -130,3 +163,19 @@ def run():
     else:
 
         print("Please enter yes or no")
+
+def run():
+
+    choice = show_menu()
+
+    if choice == "1":
+        book_food()
+
+    elif choice == "2":
+        print("Booking history will be connected next")
+
+    elif choice == "3":
+        print("Goodbye")
+
+    else:
+        print("Invalid option")
