@@ -7,8 +7,11 @@ from services.food_service import (
 
 from services.customer_service import get_or_create_customer
 
-from services.booking_service import create_booking
-
+from services.booking_service import (
+    create_booking,
+    confirm_booking,
+    cancel_booking
+)
 
 def run():
 
@@ -95,9 +98,35 @@ def run():
         print(error)
         return
 
-    print("Booking created successfully")
+    print("\nBooking summary")
     print("Customer:", booking.customer.name)
     print("Food:", booking.food.name)
     print("Quantity:", booking.quantity)
     print("Date:", booking.booking_date)
     print("Time:", booking.booking_time)
+
+    confirmation = input("\nConfirm booking? (yes/no): ").strip().lower()
+
+    if confirmation == "yes":
+
+        booking_id, error = confirm_booking(booking.id)
+
+        if error:
+            print(error)
+            return
+
+        print("Booking confirmed successfully")
+
+    elif confirmation == "no":
+
+        booking_id, error = cancel_booking(booking.id)
+
+        if error:
+            print(error)
+            return
+
+        print("Booking cancelled")
+
+    else:
+
+        print("Please enter yes or no")

@@ -21,12 +21,9 @@ CREATE TABLE foods (
 -- Records food bookings made by customers
 CREATE TABLE bookings (
     id BIGSERIAL PRIMARY KEY,
-
     customer_id BIGINT NOT NULL,
     food_id BIGINT NOT NULL,
-
     quantity INTEGER NOT NULL CHECK (quantity > 0),
-
     booking_date DATE NOT NULL,
     booking_time TIME NOT NULL,
 
@@ -34,6 +31,8 @@ CREATE TABLE bookings (
         CHECK (status IN ('pending', 'confirmed', 'cancelled', 'completed')),
 
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    expires_at TIMESTAMPTZ NOT NULL,
 
     FOREIGN KEY (customer_id) REFERENCES customers(id),
     FOREIGN KEY (food_id) REFERENCES foods(id)

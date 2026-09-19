@@ -9,7 +9,8 @@ class Booking:
         booking_date,
         booking_time,
         status="pending",
-        created_at=None
+        created_at=None,
+        expires_at=None
     ):
         self.id = id
         self.customer = customer
@@ -19,3 +20,4 @@ class Booking:
         self.booking_time = booking_time
         self.status = status
         self.created_at = created_at
+        self.expires_at = expires_at
