@@ -18,17 +18,19 @@ def save_booking(booking):
                     food_id,
                     quantity,
                     booking_date,
-                    booking_time
+                    booking_time,
+                    expires_at
                 )
                 VALUES (%s, %s, %s, %s, %s)
-                RETURNING id, status, created_at;
+                RETURNING id, status, created_at, expires_at;
                 """,
                 (
                     booking.customer.id,
                     booking.food.id,
                     booking.quantity,
                     booking.booking_date,
-                    booking.booking_time
+                    booking.booking_time,
+                    booking.expires_at
                 )
             )
 
@@ -42,6 +44,7 @@ def save_booking(booking):
         booking.id = booking_data[0]
         booking.status = booking_data[1]
         booking.created_at = booking_data[2]
+        booking.expires_at = booking_data[3]
 
         return booking
 
@@ -65,6 +68,7 @@ def get_bookings_by_customer(customer_id):
                     b.booking_time,
                     b.status,
                     b.created_at,
+                    b.expires_at,
 
                     c.id,
                     c.name,
@@ -99,18 +103,18 @@ def get_bookings_by_customer(customer_id):
         for booking in booking_data:
 
             customer = Customer(
-                booking[6],
                 booking[7],
                 booking[8],
-                booking[9]
+                booking[9],
+                booking[10]
             )
 
             food = Food(
-                booking[10],
                 booking[11],
                 booking[12],
                 booking[13],
-                booking[14]
+                booking[14],
+                booking[15]
             )
 
             saved_booking = Booking(
@@ -337,6 +341,7 @@ def get_booking_by_id(booking_id):
                     b.booking_time,
                     b.status,
                     b.created_at,
+                    b.expires_at,
 
                     c.id,
                     c.name,
@@ -368,18 +373,18 @@ def get_booking_by_id(booking_id):
             return None
 
         customer = Customer(
-            booking_data[6],
             booking_data[7],
             booking_data[8],
-            booking_data[9]
+            booking_data[9],
+            booking_data[10]
         )
 
         food = Food(
-            booking_data[10],
             booking_data[11],
             booking_data[12],
             booking_data[13],
-            booking_data[14]
+            booking_data[14],
+            booking_data[15]
         )
 
         return Booking(
@@ -390,8 +395,39 @@ def get_booking_by_id(booking_id):
             booking_data[2],
             booking_data[3],
             booking_data[4],
-            booking_data[5]
+            booking_data[5],
+            booking_data[6],
         )
+
+    finally:
+        connection.close()
+
+def expire_pending_bookings():
+
+    connection = get_connection()
+
+    try:
+        with connection.cursor() as cursor:
+
+            cursor.execute(
+                """
+                UPDATE bookings
+                SET status = 'cancelled'
+                WHERE status = 'pending'
+                  AND expires_at <= CURRENT_TIMESTAMP
+                RETURNING id;
+                """
+            )
+
+            expired_bookings = cursor.fetchall()
+
+        connection.commit()
+
+        return [booking[0] for booking in expired_bookings]
+
+    except Exception:
+        connection.rollback()
+        raise
 
     finally:
         connection.close()

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 from models.booking import Booking
 
@@ -8,9 +8,11 @@ from repositories.booking_repository import (
     get_booking_by_id,
     confirm_booking as confirm_booking_repository,
     cancel_booking as cancel_booking_repository,
-    complete_booking as complete_booking_repository
+    complete_booking as complete_booking_repository,
+    expire_pending_bookings as expire_pending_bookings_repository
 )
 
+PENDING_BOOKING_EXPIRATION_MINUTES = 15
 
 def create_booking(customer, food, quantity, booking_date, booking_time):
 
@@ -42,13 +44,18 @@ def create_booking(customer, food, quantity, booking_date, booking_time):
     if booking_date < datetime.today().date():
         return None, "Booking date cannot be in the past."
 
+    expires_at = datetime.now(timezone.utc) + timedelta(
+    minutes=PENDING_BOOKING_EXPIRATION_MINUTES
+)
+
     booking = Booking(
         None,
         customer,
         food,
         quantity,
         booking_date,
-        booking_time
+        booking_time,
+        expires_at=expires_at
     )
 
     saved_booking = save_booking(booking)
@@ -118,3 +125,7 @@ def get_booking(booking_id):
         return None, "Booking not found"
 
     return booking, None
+
+def expire_pending_bookings():
+
+    return expire_pending_bookings_repository()
