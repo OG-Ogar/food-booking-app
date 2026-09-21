@@ -3,7 +3,6 @@ from services.food_service import (
     check_availability,
     select_food,
     check_quantity,
-    get_customer_bookings
 )
 
 from services.customer_service import (
@@ -14,7 +13,8 @@ from services.customer_service import (
 from services.booking_service import (
     create_booking,
     confirm_booking,
-    cancel_booking
+    cancel_booking,
+    get_customer_bookings
 )
 
 def view_customer_bookings(customer):
@@ -40,14 +40,64 @@ def view_customer_bookings(customer):
         print("Time:", booking.booking_time)
         print("Status:", booking.status)
 
-    if booking.status == "pending":
-        print("Expires at:", booking.expires_at)
+        if booking.status == "pending":
+            print("Expires at:", booking.expires_at)
 
     try:
         booking_id = int(input("\nEnter booking ID to manage (0 to go back): "))
     except ValueError:
         print("Please enter a valid booking ID")
         return
+
+    if booking_id == 0:
+        return
+
+    selected_booking = None
+
+    for booking in bookings:
+
+        if booking.id == booking_id:
+            selected_booking = booking
+            break
+
+    if selected_booking is None:
+        print("Booking not found")
+        return
+
+    print("\nSelected booking:")
+    print("Food:", selected_booking.food.name)
+    print("Quantity:", selected_booking.quantity)
+    print("Date:", selected_booking.booking_date)
+    print("Time:", selected_booking.booking_time)
+    print("Status:", selected_booking.status)
+
+    if selected_booking.status == "pending":
+        print("Expires at:", selected_booking.expires_at)
+        
+        if selected_booking.status in ("pending", "confirmed"):
+            print("\n1. Cancel booking")
+            print("2. Go back")
+
+        try:
+            action = int(input("\nChoose an option: "))
+        except ValueError:
+            print("Please enter a valid option")
+            return
+
+        if action == 1:
+            booking_id, error = cancel_booking(selected_booking.id)
+
+            if error:
+                print(error)
+                return
+
+            print("Booking cancelled successfully")
+
+        elif action == 2:
+            return
+
+        else:
+            print("Invalid option")
 
 def show_menu():
 
