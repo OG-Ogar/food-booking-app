@@ -1,8 +1,9 @@
+from datetime import datetime, timezone
+
 from database.connection import get_connection
 from models.booking import Booking
 from models.customer import Customer
 from models.food import Food
-
 
 def save_booking(booking):
 
@@ -145,7 +146,7 @@ def confirm_booking(booking_id):
 
             cursor.execute(
                 """
-                SELECT food_id, quantity, status
+                SELECT food_id, quantity, status, expires_at
                 FROM bookings
                 WHERE id = %s
                 FOR UPDATE;
@@ -162,6 +163,11 @@ def confirm_booking(booking_id):
             food_id = booking_data[0]
             booking_quantity = booking_data[1]
             booking_status = booking_data[2]
+            expires_at = booking_data[3]
+
+            if booking_status == "pending" and expires_at <= datetime.now(timezone.utc):
+                connection.rollback()
+                return None, "Booking has expired"
 
             if booking_status != "pending":
                 connection.rollback()
@@ -214,7 +220,6 @@ def confirm_booking(booking_id):
 
     finally:
         connection.close()
-
 
 def cancel_booking(booking_id):
 

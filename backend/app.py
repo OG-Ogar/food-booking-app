@@ -6,7 +6,10 @@ from services.food_service import (
     get_customer_bookings
 )
 
-from services.customer_service import get_or_create_customer
+from services.customer_service import (
+    get_or_create_customer,
+    find_customer_by_phone
+)
 
 from services.booking_service import (
     create_booking,
@@ -36,6 +39,15 @@ def view_customer_bookings(customer):
         print("Date:", booking.booking_date)
         print("Time:", booking.booking_time)
         print("Status:", booking.status)
+
+    if booking.status == "pending":
+        print("Expires at:", booking.expires_at)
+
+    try:
+        booking_id = int(input("\nEnter booking ID to manage (0 to go back): "))
+    except ValueError:
+        print("Please enter a valid booking ID")
+        return
 
 def show_menu():
 
@@ -138,44 +150,62 @@ def book_food():
     print("Date:", booking.booking_date)
     print("Time:", booking.booking_time)
 
-    confirmation = input("\nConfirm booking? (yes/no): ").strip().lower()
+    while True:
 
-    if confirmation == "yes":
+        confirmation = input(
+            "\nConfirm booking? (yes/no): "
+        ).strip().lower()
 
-        booking_id, error = confirm_booking(booking.id)
+        if confirmation == "yes":
 
-        if error:
-            print(error)
-            return
+            booking_id, error = confirm_booking(booking.id)
 
-        print("Booking confirmed successfully")
+            if error:
+                print(error)
+                return
 
-    elif confirmation == "no":
+            print("Booking confirmed successfully")
+            break
 
-        booking_id, error = cancel_booking(booking.id)
+        elif confirmation == "no":
 
-        if error:
-            print(error)
-            return
+            booking_id, error = cancel_booking(booking.id)
 
-        print("Booking cancelled")
+            if error:
+                print(error)
+                return
 
-    else:
+            print("Booking cancelled")
+            break
 
-        print("Please enter yes or no")
+        else:
+
+            print("Please enter yes or no")
 
 def run():
 
-    choice = show_menu()
+    while True:
 
-    if choice == "1":
-        book_food()
+        choice = show_menu()
 
-    elif choice == "2":
-        print("Booking history will be connected next")
+        if choice == "1":
+            book_food()
 
-    elif choice == "3":
-        print("Goodbye")
+        elif choice == "2":
 
-    else:
-        print("Invalid option")
+            phone = input("Enter your phone number: ")
+
+            customer, error = find_customer_by_phone(phone)
+
+            if error:
+                print(error)
+                continue
+
+            view_customer_bookings(customer)
+
+        elif choice == "3":
+            print("Goodbye")
+            break
+
+        else:
+            print("Invalid option")
