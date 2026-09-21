@@ -22,7 +22,7 @@ def save_booking(booking):
                     booking_time,
                     expires_at
                 )
-                VALUES (%s, %s, %s, %s, %s)
+                VALUES (%s, %s, %s, %s, %s, %s)
                 RETURNING id, status, created_at, expires_at;
                 """,
                 (
@@ -126,7 +126,8 @@ def get_bookings_by_customer(customer_id):
                 booking[2],
                 booking[3],
                 booking[4],
-                booking[5]
+                booking[5],
+                booking[6]
             )
 
             bookings.append(saved_booking)

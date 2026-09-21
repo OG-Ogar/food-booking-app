@@ -129,3 +129,10 @@ def get_booking(booking_id):
 def expire_pending_bookings():
 
     return expire_pending_bookings_repository()
+
+def calculate_total_price(food, quantity):
+
+    if food is None:
+        return None
+
+    return food.price * quantity

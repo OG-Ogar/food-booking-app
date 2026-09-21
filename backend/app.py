@@ -2,7 +2,7 @@ from services.food_service import (
     search_food,
     check_availability,
     select_food,
-    check_quantity,
+    check_quantity
 )
 
 from services.customer_service import (
@@ -14,8 +14,11 @@ from services.booking_service import (
     create_booking,
     confirm_booking,
     cancel_booking,
-    get_customer_bookings
+    complete_booking,
+    get_customer_bookings,
+    calculate_total_price
 )
+
 
 def view_customer_bookings(customer):
 
@@ -44,7 +47,9 @@ def view_customer_bookings(customer):
             print("Expires at:", booking.expires_at)
 
     try:
-        booking_id = int(input("\nEnter booking ID to manage (0 to go back): "))
+        booking_id = int(
+            input("\nEnter booking ID to manage (0 to go back): ")
+        )
     except ValueError:
         print("Please enter a valid booking ID")
         return
@@ -72,20 +77,32 @@ def view_customer_bookings(customer):
     print("Status:", selected_booking.status)
 
     if selected_booking.status == "pending":
-        print("Expires at:", selected_booking.expires_at)
-        
-        if selected_booking.status in ("pending", "confirmed"):
-            print("\n1. Cancel booking")
-            print("2. Go back")
 
-        try:
-            action = int(input("\nChoose an option: "))
-        except ValueError:
-            print("Please enter a valid option")
-            return
+        print("\n1. Cancel booking")
+        print("2. Go back")
+
+    elif selected_booking.status == "confirmed":
+
+        print("\n1. Complete booking")
+        print("2. Cancel booking")
+        print("3. Go back")
+
+    else:
+        return
+
+    try:
+        action = int(input("\nChoose an option: "))
+    except ValueError:
+        print("Please enter a valid option")
+        return
+
+    if selected_booking.status == "pending":
 
         if action == 1:
-            booking_id, error = cancel_booking(selected_booking.id)
+
+            booking_id, error = cancel_booking(
+                selected_booking.id
+            )
 
             if error:
                 print(error)
@@ -99,6 +116,39 @@ def view_customer_bookings(customer):
         else:
             print("Invalid option")
 
+    elif selected_booking.status == "confirmed":
+
+        if action == 1:
+
+            booking_id, error = complete_booking(
+                selected_booking.id
+            )
+
+            if error:
+                print(error)
+                return
+
+            print("Booking completed successfully")
+
+        elif action == 2:
+
+            booking_id, error = cancel_booking(
+                selected_booking.id
+            )
+
+            if error:
+                print(error)
+                return
+
+            print("Booking cancelled successfully")
+
+        elif action == 3:
+            return
+
+        else:
+            print("Invalid option")
+
+
 def show_menu():
 
     print("\nFood Booking System")
@@ -107,6 +157,7 @@ def show_menu():
     print("3. Exit")
 
     return input("Choose an option: ").strip()
+
 
 def book_food():
 
@@ -178,8 +229,14 @@ def book_food():
 
     print("Customer:", customer.name)
     print("Phone:", customer.phone)
-    booking_date = input("Enter booking date (YYYY-MM-DD): ")
-    booking_time = input("Enter booking time (HH:MM): ")
+
+    booking_date = input(
+        "Enter booking date (YYYY-MM-DD): "
+    )
+
+    booking_time = input(
+        "Enter booking time (HH:MM): "
+    )
 
     booking, error = create_booking(
         customer,
@@ -193,12 +250,20 @@ def book_food():
         print(error)
         return
 
+    total_price = calculate_total_price(
+        booking.food,
+        booking.quantity
+    )
+
     print("\nBooking summary")
     print("Customer:", booking.customer.name)
     print("Food:", booking.food.name)
+    print("Unit price:", booking.food.price)
     print("Quantity:", booking.quantity)
+    print("Total price:", total_price)
     print("Date:", booking.booking_date)
     print("Time:", booking.booking_time)
+   print("Confirm before:", booking.expires_at)
 
     while True:
 
@@ -208,7 +273,9 @@ def book_food():
 
         if confirmation == "yes":
 
-            booking_id, error = confirm_booking(booking.id)
+            booking_id, error = confirm_booking(
+                booking.id
+            )
 
             if error:
                 print(error)
@@ -219,7 +286,9 @@ def book_food():
 
         elif confirmation == "no":
 
-            booking_id, error = cancel_booking(booking.id)
+            booking_id, error = cancel_booking(
+                booking.id
+            )
 
             if error:
                 print(error)
@@ -231,6 +300,7 @@ def book_food():
         else:
 
             print("Please enter yes or no")
+
 
 def run():
 
@@ -254,8 +324,10 @@ def run():
             view_customer_bookings(customer)
 
         elif choice == "3":
+
             print("Goodbye")
             break
 
         else:
+
             print("Invalid option")
