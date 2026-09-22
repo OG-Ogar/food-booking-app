@@ -37,15 +37,23 @@ def view_customer_bookings(customer):
 
     for booking in bookings:
 
-        print("\nBooking ID:", booking.id)
-        print("Food:", booking.food.name)
-        print("Quantity:", booking.quantity)
-        print("Date:", booking.booking_date)
-        print("Time:", booking.booking_time)
-        print("Status:", booking.status)
+    print("\nBooking ID:", booking.id)
+    print("Food:", booking.food.name)
+    print("Unit price:", booking.food.price)
+    print("Quantity:", booking.quantity)
 
-        if booking.status == "pending":
-            print("Expires at:", booking.expires_at)
+    total_price = calculate_total_price(
+        booking.food,
+        booking.quantity
+    )
+
+    print("Total price:", total_price)
+    print("Date:", booking.booking_date)
+    print("Time:", booking.booking_time)
+    print("Status:", booking.status)
+
+    if booking.status == "pending":
+        print("Expires at:", booking.expires_at)
 
     try:
         booking_id = int(
@@ -72,10 +80,21 @@ def view_customer_bookings(customer):
 
     print("\nSelected booking:")
     print("Food:", selected_booking.food.name)
+    print("Unit price:", selected_booking.food.price)
     print("Quantity:", selected_booking.quantity)
+
+    total_price = calculate_total_price(
+        selected_booking.food,
+        selected_booking.quantity
+    )
+
+    print("Total price:", total_price)
     print("Date:", selected_booking.booking_date)
     print("Time:", selected_booking.booking_time)
     print("Status:", selected_booking.status)
+
+    if selected_booking.status == "pending":
+        print("Expires at:", selected_booking.expires_at)
 
     if selected_booking.status == "pending":
 
@@ -89,6 +108,13 @@ def view_customer_bookings(customer):
         print("3. Go back")
 
     else:
+
+        if selected_booking.status == "completed":
+            print("\nThis booking has already been completed.")
+
+        elif selected_booking.status == "cancelled":
+            print("\nThis booking has already been cancelled.")
+
         return
 
     try:
