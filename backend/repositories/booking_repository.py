@@ -437,3 +437,42 @@ def expire_pending_bookings():
 
     finally:
         connection.close()
+
+def update_booking_quantity(booking_id, quantity):
+
+    connection = get_connection()
+
+    try:
+        with connection.cursor() as cursor:
+
+            cursor.execute(
+                """
+                UPDATE bookings
+                SET quantity = %s
+                WHERE id = %s
+                  AND status = 'pending'
+                  AND expires_at > CURRENT_TIMESTAMP
+                RETURNING id, quantity;
+                """,
+                (
+                    quantity,
+                    booking_id
+                )
+            )
+
+            booking_data = cursor.fetchone()
+
+        if booking_data is None:
+            connection.rollback()
+            return None, "Booking could not be updated"
+
+        connection.commit()
+
+        return booking_data[0], None
+
+    except Exception:
+        connection.rollback()
+        raise
+
+    finally:
+        connection.close()

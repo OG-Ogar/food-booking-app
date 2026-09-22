@@ -16,7 +16,8 @@ from services.booking_service import (
     cancel_booking,
     complete_booking,
     get_customer_bookings,
-    calculate_total_price
+    calculate_total_price,
+    update_booking_quantity
 )
 
 
@@ -158,6 +159,23 @@ def show_menu():
 
     return input("Choose an option: ").strip()
 
+def show_booking_summary(booking):
+
+    total_price = calculate_total_price(
+        booking.food,
+        booking.quantity
+    )
+
+    print("\nBooking summary")
+    print("Customer:", booking.customer.name)
+    print("Food:", booking.food.name)
+    print("Unit price:", booking.food.price)
+    print("Quantity:", booking.quantity)
+    print("Total price:", total_price)
+    print("Date:", booking.booking_date)
+    print("Time:", booking.booking_time)
+    print("Confirm before:", booking.expires_at)
+
 
 def book_food():
 
@@ -250,28 +268,23 @@ def book_food():
         print(error)
         return
 
-    total_price = calculate_total_price(
-        booking.food,
-        booking.quantity
-    )
-
-    print("\nBooking summary")
-    print("Customer:", booking.customer.name)
-    print("Food:", booking.food.name)
-    print("Unit price:", booking.food.price)
-    print("Quantity:", booking.quantity)
-    print("Total price:", total_price)
-    print("Date:", booking.booking_date)
-    print("Time:", booking.booking_time)
-   print("Confirm before:", booking.expires_at)
+    show_booking_summary(booking)
 
     while True:
 
-        confirmation = input(
-            "\nConfirm booking? (yes/no): "
-        ).strip().lower()
+        print("\n1. Confirm booking")
+        print("2. Change booking")
+        print("3. Cancel booking")
 
-        if confirmation == "yes":
+        try:
+            confirmation = int(
+                input("\nChoose an option: ")
+            )
+        except ValueError:
+            print("Please enter a valid option")
+            continue
+
+        if confirmation == 1:
 
             booking_id, error = confirm_booking(
                 booking.id
@@ -284,7 +297,45 @@ def book_food():
             print("Booking confirmed successfully")
             break
 
-        elif confirmation == "no":
+        elif confirmation == 2:
+
+            print("\nCurrent quantity:", booking.quantity)
+
+            try:
+                new_quantity = int(
+                    input("Enter new quantity: ")
+                )
+            except ValueError:
+                print("Please enter a valid quantity")
+                continue
+
+            quantity_status = check_quantity(
+                booking.food,
+                new_quantity
+            )
+
+            if quantity_status != "Valid":
+                print(quantity_status)
+                continue
+
+            booking_id, error = update_booking_quantity(
+                booking.id,
+                new_quantity
+            )
+
+            if error:
+                print(error)
+                continue
+
+            booking.quantity = new_quantity
+
+            print("Quantity updated successfully")
+
+            show_booking_summary(booking)
+
+            continue
+
+        elif confirmation == 3:
 
             booking_id, error = cancel_booking(
                 booking.id
@@ -299,7 +350,7 @@ def book_food():
 
         else:
 
-            print("Please enter yes or no")
+            print("Invalid option")
 
 
 def run():

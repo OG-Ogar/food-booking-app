@@ -9,7 +9,8 @@ from repositories.booking_repository import (
     confirm_booking as confirm_booking_repository,
     cancel_booking as cancel_booking_repository,
     complete_booking as complete_booking_repository,
-    expire_pending_bookings as expire_pending_bookings_repository
+    expire_pending_bookings as expire_pending_bookings_repository,
+    update_booking_quantity as update_booking_quantity_repository
 )
 
 PENDING_BOOKING_EXPIRATION_MINUTES = 15
@@ -44,8 +45,14 @@ def create_booking(customer, food, quantity, booking_date, booking_time):
     if booking_date < datetime.today().date():
         return None, "Booking date cannot be in the past."
 
+    today = datetime.today().date()
+    current_time = datetime.now().time()
+
+    if booking_date == today and booking_time < current_time:
+        return None, "Booking time cannot be in the past."
+
     expires_at = datetime.now(timezone.utc) + timedelta(
-    minutes=PENDING_BOOKING_EXPIRATION_MINUTES
+        minutes=PENDING_BOOKING_EXPIRATION_MINUTES
 )
 
     booking = Booking(
@@ -136,3 +143,19 @@ def calculate_total_price(food, quantity):
         return None
 
     return food.price * quantity
+
+def update_booking_quantity(booking_id, quantity):
+
+    if booking_id is None:
+        return None, "Booking ID is required"
+
+    if booking_id <= 0:
+        return None, "Invalid booking ID"
+
+    if quantity <= 0:
+        return None, "Quantity must be greater than zero"
+
+    return update_booking_quantity_repository(
+        booking_id,
+        quantity
+    )
