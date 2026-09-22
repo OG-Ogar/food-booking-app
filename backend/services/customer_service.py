@@ -3,8 +3,10 @@ from repositories.customer_repository import (
     get_customer_by_phone as get_customer_by_phone_repository
 )
 
+from utils.password import hash_password
 
-def create_customer_service(name, phone):
+
+def create_customer_service(name, phone, password):
 
     name = name.strip()
     phone = phone.strip()
@@ -18,8 +20,16 @@ def create_customer_service(name, phone):
     if not phone.isdigit():
         return None, "Phone number must contain only digits"
 
-    customer = create_customer(name, phone)
+    if password.strip() == "":
+        return None, "Password is required"
 
+    password_hash = hash_password(password)
+
+    customer = create_customer(
+        name,
+        phone,
+        password_hash
+    )
     if customer is None:
         return None, "Customer could not be created"
 
@@ -60,3 +70,20 @@ def get_or_create_customer(phone, name=None):
     customer, error = create_customer_service(name, phone)
 
     return customer, error, False
+
+def get_customer_for_login(phone):
+
+    phone = phone.strip()
+
+    if phone == "":
+        return None, "Phone number is required"
+
+    if not phone.isdigit():
+        return None, "Phone number must contain only digits"
+
+    customer = get_customer_by_phone_repository(phone)
+
+    if customer is None:
+        return None, "Customer not found"
+
+    return customer, None

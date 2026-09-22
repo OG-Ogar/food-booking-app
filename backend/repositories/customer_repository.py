@@ -2,7 +2,7 @@ from models.customer import Customer
 from database.connection import get_connection
 
 
-def create_customer(name, phone):
+def create_customer(name, phone, password_hash):
 
     connection = get_connection()
 
@@ -11,11 +11,11 @@ def create_customer(name, phone):
 
             cursor.execute(
                 """
-                INSERT INTO customers (name, phone)
-                VALUES (%s, %s)
-                RETURNING id, name, phone, created_at;
+                INSERT INTO customers (name, phone, password_hash)
+                VALUES (%s, %s, %s)
+                RETURNING id, name, phone, password_hash, created_at;
                 """,
-                (name, phone)
+                (name, phone, password_hash)
             )
 
             customer_data = cursor.fetchone()
@@ -30,6 +30,7 @@ def create_customer(name, phone):
             customer_data[1],
             customer_data[2],
             customer_data[3]
+            customer_data[4]
         )
 
     finally:
@@ -44,7 +45,7 @@ def get_customer_by_phone(phone):
 
             cursor.execute(
                 """
-                SELECT id, name, phone, created_at
+                SELECT id, name, phone, password_hash created_at
                 FROM customers
                 WHERE phone = %s;
                 """,
@@ -61,6 +62,7 @@ def get_customer_by_phone(phone):
             customer_data[1],
             customer_data[2],
             customer_data[3]
+            customer_data[4]
         )
 
     finally:
