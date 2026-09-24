@@ -74,6 +74,7 @@ def get_bookings_by_customer(customer_id):
                     c.id,
                     c.name,
                     c.phone,
+                    c.password_hash,
                     c.created_at,
 
                     f.id,
@@ -107,15 +108,16 @@ def get_bookings_by_customer(customer_id):
                 booking[7],
                 booking[8],
                 booking[9],
-                booking[10]
+                booking[10],
+                booking[11]
             )
 
             food = Food(
-                booking[11],
                 booking[12],
                 booking[13],
                 booking[14],
-                booking[15]
+                booking[15],
+                booking[16]
             )
 
             saved_booking = Booking(
@@ -352,6 +354,7 @@ def get_booking_by_id(booking_id):
                     c.id,
                     c.name,
                     c.phone,
+                    c.password_hash,
                     c.created_at,
 
                     f.id,
@@ -382,15 +385,16 @@ def get_booking_by_id(booking_id):
             booking_data[7],
             booking_data[8],
             booking_data[9],
-            booking_data[10]
+            booking_data[10],
+            booking_data[11]
         )
 
         food = Food(
-            booking_data[11],
             booking_data[12],
             booking_data[13],
             booking_data[14],
-            booking_data[15]
+            booking_data[15],
+            booking_data[16]
         )
 
         return Booking(

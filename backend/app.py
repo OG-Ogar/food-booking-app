@@ -5,11 +5,6 @@ from services.food_service import (
     check_quantity
 )
 
-from services.customer_service import (
-    get_or_create_customer,
-    find_customer_by_phone
-)
-
 from services.booking_service import (
     create_booking,
     confirm_booking,
@@ -19,6 +14,8 @@ from services.booking_service import (
     calculate_total_price,
     update_booking_quantity
 )
+
+from services.auth_service import login, register
 
 
 def view_customer_bookings(customer):
@@ -203,7 +200,7 @@ def show_booking_summary(booking):
     print("Confirm before:", booking.expires_at)
 
 
-def book_food():
+def book_food(customer):
 
     search = input("Enter food name: ")
 
@@ -252,27 +249,9 @@ def book_food():
 
     print("Quantity selected:", quantity)
 
-    customer_phone = input("Enter your phone number: ")
-
-    customer, error, needs_name = get_or_create_customer(
-        customer_phone
-    )
-
-    if needs_name:
-
-        customer_name = input("Enter your name: ")
-
-        customer, error, needs_name = get_or_create_customer(
-            customer_phone,
-            customer_name
-        )
-
-    if error:
-        print(error)
-        return
-
     print("Customer:", customer.name)
     print("Phone:", customer.phone)
+    
 
     booking_date = input(
         "Enter booking date (YYYY-MM-DD): "
@@ -379,24 +358,84 @@ def book_food():
             print("Invalid option")
 
 
+def authenticate():
+
+    while True:
+
+        print("\nAuthentication")
+        print("1. Login")
+        print("2. Register")
+        print("3. Exit")
+
+        choice = input("Choose an option: ").strip()
+
+        if choice == "1":
+
+            phone = input("Enter your phone number: ")
+            password = input("Enter your password: ")
+
+            customer, error = login(
+                phone,
+                password
+            )
+
+            if error:
+                print(error)
+                continue
+
+            print("\nLogin successful")
+            print("Welcome,", customer.name)
+
+            return customer
+
+        elif choice == "2":
+
+            name = input("Enter your name: ")
+            phone = input("Enter your phone number: ")
+            password = input("Enter your password: ")
+            confirm_password = input("Confirm your password: ")
+
+            customer, error = register(
+                name,
+                phone,
+                password,
+                confirm_password
+            )
+
+            if error:
+                print(error)
+                continue
+
+            print("\nRegistration successful")
+            print("Welcome,", customer.name)
+
+            return customer
+
+        elif choice == "3":
+
+            return None
+
+        else:
+
+            print("Invalid option")
+
+
 def run():
+
+    customer = authenticate()
+
+    if customer is None:
+        print("Goodbye")
+        return
 
     while True:
 
         choice = show_menu()
 
         if choice == "1":
-            book_food()
+            book_food(customer)
 
         elif choice == "2":
-
-            phone = input("Enter your phone number: ")
-
-            customer, error = find_customer_by_phone(phone)
-
-            if error:
-                print(error)
-                continue
 
             view_customer_bookings(customer)
 
