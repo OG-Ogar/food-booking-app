@@ -29,7 +29,7 @@ def create_customer(name, phone, password_hash):
             customer_data[0],
             customer_data[1],
             customer_data[2],
-            customer_data[3]
+            customer_data[3],
             customer_data[4]
         )
 
@@ -45,7 +45,7 @@ def get_customer_by_phone(phone):
 
             cursor.execute(
                 """
-                SELECT id, name, phone, password_hash created_at
+                SELECT id, name, phone, password_hash, created_at
                 FROM customers
                 WHERE phone = %s;
                 """,
@@ -61,7 +61,7 @@ def get_customer_by_phone(phone):
             customer_data[0],
             customer_data[1],
             customer_data[2],
-            customer_data[3]
+            customer_data[3],
             customer_data[4]
         )
 

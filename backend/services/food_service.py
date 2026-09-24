@@ -11,6 +11,8 @@ def check_availability(food):
 
 def search_food(search_term):
 
+    search_term = search_term.strip()
+
     if search_term == "":
         return []
 
@@ -24,7 +26,7 @@ def search_food(search_term):
             results.append(food)
 
     return results
-
+    
 
 def get_food_by_id(food_id):
 

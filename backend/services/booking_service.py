@@ -15,6 +15,7 @@ from repositories.booking_repository import (
 
 PENDING_BOOKING_EXPIRATION_MINUTES = 15
 
+
 def create_booking(customer, food, quantity, booking_date, booking_time):
 
     if customer is None:
@@ -25,6 +26,9 @@ def create_booking(customer, food, quantity, booking_date, booking_time):
 
     if quantity <= 0:
         return None, "Quantity must be greater than zero"
+    
+    if quantity > food.quantity:
+        return None, f"Only {food.quantity} {food.name} available"
 
     try:
         booking_date = datetime.strptime(
@@ -53,7 +57,7 @@ def create_booking(customer, food, quantity, booking_date, booking_time):
 
     expires_at = datetime.now(timezone.utc) + timedelta(
         minutes=PENDING_BOOKING_EXPIRATION_MINUTES
-)
+    )
 
     booking = Booking(
         None,
@@ -118,6 +122,7 @@ def complete_booking(booking_id):
 
     return complete_booking_repository(booking_id)
 
+
 def get_booking(booking_id):
 
     if booking_id is None:
@@ -133,9 +138,11 @@ def get_booking(booking_id):
 
     return booking, None
 
+
 def expire_pending_bookings():
 
     return expire_pending_bookings_repository()
+
 
 def calculate_total_price(food, quantity):
 
@@ -143,6 +150,7 @@ def calculate_total_price(food, quantity):
         return None
 
     return food.price * quantity
+
 
 def update_booking_quantity(booking_id, quantity):
 

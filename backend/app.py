@@ -34,15 +34,15 @@ def view_customer_bookings(customer):
 
     for booking in bookings:
 
-    print("\nBooking ID:", booking.id)
-    print("Food:", booking.food.name)
-    print("Unit price:", booking.food.price)
-    print("Quantity:", booking.quantity)
+        print("\nBooking ID:", booking.id)
+        print("Food:", booking.food.name)
+        print("Unit price:", booking.food.price)
+        print("Quantity:", booking.quantity)
 
-    total_price = calculate_total_price(
-        booking.food,
-        booking.quantity
-    )
+        total_price = calculate_total_price(
+            booking.food,
+            booking.quantity
+        )
 
     print("Total price:", total_price)
     print("Date:", booking.booking_date)
