@@ -90,7 +90,13 @@ def get_customer_bookings(customer_id):
     return bookings, None
 
 
-def confirm_booking(booking_id):
+def confirm_booking(customer_id, booking_id):
+
+    if customer_id is None:
+        return None, "Customer ID is required"
+
+    if customer_id <= 0:
+        return None, "Invalid customer ID"
 
     if booking_id is None:
         return None, "Booking ID is required"
@@ -98,21 +104,19 @@ def confirm_booking(booking_id):
     if booking_id <= 0:
         return None, "Invalid booking ID"
 
-    return confirm_booking_repository(booking_id)
+    return confirm_booking_repository(
+        customer_id,
+        booking_id
+    )
 
 
-def cancel_booking(booking_id):
+def cancel_booking(customer_id, booking_id):
 
-    if booking_id is None:
-        return None, "Booking ID is required"
+    if customer_id is None:
+        return None, "Customer ID is required"
 
-    if booking_id <= 0:
-        return None, "Invalid booking ID"
-
-    return cancel_booking_repository(booking_id)
-
-
-def complete_booking(booking_id):
+    if customer_id <= 0:
+        return None, "Invalid customer ID"
 
     if booking_id is None:
         return None, "Booking ID is required"
@@ -120,10 +124,19 @@ def complete_booking(booking_id):
     if booking_id <= 0:
         return None, "Invalid booking ID"
 
-    return complete_booking_repository(booking_id)
+    return cancel_booking_repository(
+        customer_id,
+        booking_id
+    )
 
 
-def get_booking(booking_id):
+def complete_booking(customer_id, booking_id):
+
+    if customer_id is None:
+        return None, "Customer ID is required"
+
+    if customer_id <= 0:
+        return None, "Invalid customer ID"
 
     if booking_id is None:
         return None, "Booking ID is required"
@@ -131,28 +144,19 @@ def get_booking(booking_id):
     if booking_id <= 0:
         return None, "Invalid booking ID"
 
-    booking = get_booking_by_id(booking_id)
-
-    if booking is None:
-        return None, "Booking not found"
-
-    return booking, None
+    return complete_booking_repository(
+        customer_id,
+        booking_id
+    )
 
 
-def expire_pending_bookings():
+def update_booking_quantity(customer_id, booking_id, quantity):
 
-    return expire_pending_bookings_repository()
+    if customer_id is None:
+        return None, "Customer ID is required"
 
-
-def calculate_total_price(food, quantity):
-
-    if food is None:
-        return None
-
-    return food.price * quantity
-
-
-def update_booking_quantity(booking_id, quantity):
+    if customer_id <= 0:
+        return None, "Invalid customer ID"
 
     if booking_id is None:
         return None, "Booking ID is required"
@@ -164,6 +168,7 @@ def update_booking_quantity(booking_id, quantity):
         return None, "Quantity must be greater than zero"
 
     return update_booking_quantity_repository(
+        customer_id,
         booking_id,
         quantity
     )

@@ -140,7 +140,7 @@ def get_bookings_by_customer(customer_id):
         connection.close()
 
 
-def confirm_booking(booking_id):
+def confirm_booking(customer_id, booking_id):
 
     connection = get_connection()
 
@@ -152,9 +152,10 @@ def confirm_booking(booking_id):
                 SELECT food_id, quantity, status, expires_at
                 FROM bookings
                 WHERE id = %s
+                  AND customer_id = %s
                 FOR UPDATE;
                 """,
-                (booking_id,)
+                (booking_id, customer_id)
             )
 
             booking_data = cursor.fetchone()
@@ -224,7 +225,7 @@ def confirm_booking(booking_id):
     finally:
         connection.close()
 
-def cancel_booking(booking_id):
+def cancel_booking(customer_id, booking_id):
 
     connection = get_connection()
 
@@ -236,9 +237,10 @@ def cancel_booking(booking_id):
                 SELECT food_id, quantity, status
                 FROM bookings
                 WHERE id = %s
+                    AND customer_id = %s
                 FOR UPDATE;
                 """,
-                (booking_id,)
+                (booking_id, customer_id)
             )
 
             booking_data = cursor.fetchone()
@@ -298,7 +300,7 @@ def cancel_booking(booking_id):
         connection.close()
 
 
-def complete_booking(booking_id):
+def complete_booking(customer_id, booking_id):
 
     connection = get_connection()
 
@@ -310,10 +312,11 @@ def complete_booking(booking_id):
                 UPDATE bookings
                 SET status = 'completed'
                 WHERE id = %s
+                  AND customer_id = %s
                   AND status = 'confirmed'
                 RETURNING id;
                 """,
-                (booking_id,)
+                (booking_id, customer_id)
             )
 
             completed_booking = cursor.fetchone()
@@ -442,7 +445,7 @@ def expire_pending_bookings():
     finally:
         connection.close()
 
-def update_booking_quantity(booking_id, quantity):
+def update_booking_quantity(customer_id, booking_id, quantity):
 
     connection = get_connection()
 
@@ -454,13 +457,15 @@ def update_booking_quantity(booking_id, quantity):
                 UPDATE bookings
                 SET quantity = %s
                 WHERE id = %s
+                  AND customer_id = %s
                   AND status = 'pending'
                   AND expires_at > CURRENT_TIMESTAMP
                 RETURNING id, quantity;
                 """,
                 (
                     quantity,
-                    booking_id
+                    booking_id,
+                    customer_id
                 )
             )
 

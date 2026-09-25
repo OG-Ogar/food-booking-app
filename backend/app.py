@@ -125,6 +125,7 @@ def view_customer_bookings(customer):
         if action == 1:
 
             booking_id, error = cancel_booking(
+                customer.id,
                 selected_booking.id
             )
 
@@ -145,6 +146,7 @@ def view_customer_bookings(customer):
         if action == 1:
 
             booking_id, error = complete_booking(
+                customer.id,
                 selected_booking.id
             )
 
@@ -157,6 +159,7 @@ def view_customer_bookings(customer):
         elif action == 2:
 
             booking_id, error = cancel_booking(
+                customer.id,
                 selected_booking.id
             )
 
@@ -292,6 +295,7 @@ def book_food(customer):
         if confirmation == 1:
 
             booking_id, error = confirm_booking(
+                customer.id,
                 booking.id
             )
 
@@ -324,6 +328,7 @@ def book_food(customer):
                 continue
 
             booking_id, error = update_booking_quantity(
+                customer.id,
                 booking.id,
                 new_quantity
             )
@@ -342,20 +347,20 @@ def book_food(customer):
 
         elif confirmation == 3:
 
-            booking_id, error = cancel_booking(
-                booking.id
-            )
-
-            if error:
+           booking_id, error = cancel_booking(
+                customer.id,
+                selected_booking.id
+           )
+        if error:
                 print(error)
                 return
 
-            print("Booking cancelled")
-            break
+        print("Booking cancelled")
+        break
 
-        else:
+    else:
 
-            print("Invalid option")
+        print("Invalid option")
 
 
 def authenticate():
