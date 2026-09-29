@@ -1,7 +1,12 @@
 import os
 import json
 
-from services.food_service import search_food
+from services.food_service import (
+    search_food,
+    filter_foods_by_price,
+    filter_foods_by_category
+)
+
 from dotenv import load_dotenv
 from google import genai
 
@@ -69,5 +74,26 @@ def find_foods_from_request(message):
     for ingredient in request["ingredients"]:
         foods = search_food(ingredient)
         results.extend(foods)
+
+    return results
+
+
+def find_foods_from_request_data(request):
+
+    results = []
+
+    for ingredient in request["ingredients"]:
+        foods = search_food(ingredient)
+        results.extend(foods)
+
+    results = filter_foods_by_price(
+        results,
+        request["price_preference"]
+    )
+
+    results = filter_foods_by_category(
+        results,
+        request["category"]
+    )
 
     return results

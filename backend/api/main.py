@@ -1,0 +1,55 @@
+from fastapi import FastAPI
+
+from repositories.food_repository import get_foods
+from services.food_service import search_food
+from api.routes.auth import router as auth_router
+
+
+app = FastAPI(
+    title="Food Booking API",
+    description="Backend API for the food booking application",
+    version="1.0.0"
+)
+
+app.include_router(auth_router)
+
+@app.get("/")
+def home():
+
+    return {
+        "message": "Food Booking API is running"
+    }
+
+
+@app.get("/foods")
+def foods():
+
+    food_list = get_foods()
+
+    return [
+        {
+            "id": food.id,
+            "name": food.name,
+            "price": float(food.price),
+            "category": food.category,
+            "quantity": food.quantity
+        }
+        for food in food_list
+    ]
+
+
+@app.get("/foods/search")
+def search_foods(name: str):
+
+    foods = search_food(name)
+
+    return [
+        {
+            "id": food.id,
+            "name": food.name,
+            "price": float(food.price),
+            "category": food.category,
+            "quantity": food.quantity
+        }
+        for food in foods
+    ]

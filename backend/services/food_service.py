@@ -26,6 +26,31 @@ def search_food(search_term):
             results.append(food)
 
     return results
+
+
+def filter_foods_by_price(foods, price_preference):
+
+    if price_preference is None:
+        return foods
+
+    if price_preference.lower() == "cheap":
+        return [
+            food for food in foods
+            if food.price <= 3000
+        ]
+
+    return foods
+    
+
+def filter_foods_by_category(foods, category):
+
+    if category is None:
+        return foods
+
+    return [
+        food for food in foods
+        if food.category.lower() == category.lower()
+    ]
     
 
 def get_food_by_id(food_id):
