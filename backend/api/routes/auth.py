@@ -1,6 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, HTTPException, status
 
 from services.auth_service import register, login
+from services.customer_service import get_customer_by_id
+from utils.jwt import create_access_token
+from api.dependencies import get_current_customer
 
 
 router = APIRouter(
@@ -38,7 +41,7 @@ def register_customer(
             "phone": customer.phone
         }
     }
-    
+
 
 @router.post("/login")
 def login_customer(
@@ -57,11 +60,34 @@ def login_customer(
             "error": error
         }
 
+    access_token = create_access_token(customer.id)
+
     return {
-        "success": True,
-        "customer": {
-            "id": customer.id,
-            "name": customer.name,
-            "phone": customer.phone
-        }
+    "success": True,
+    "access_token": access_token,
+    "token_type": "bearer",
+    "customer": {
+        "id": customer.id,
+        "name": customer.name,
+        "phone": customer.phone
+    }
+}
+
+@router.get("/me")
+def get_me(
+    customer_id: int = Depends(get_current_customer)
+):
+
+    customer = get_customer_by_id(customer_id)
+
+    if customer is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Customer not found"
+        )
+
+    return {
+        "id": customer.id,
+        "name": customer.name,
+        "phone": customer.phone
     }

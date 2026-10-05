@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 
 from repositories.food_repository import get_foods
 from services.food_service import search_food
 from api.routes.auth import router as auth_router
+from api.dependencies import get_current_customer
 
 
 app = FastAPI(
@@ -22,7 +23,9 @@ def home():
 
 
 @app.get("/foods")
-def foods():
+def foods(
+    customer_id: int = Depends(get_current_customer)
+):
 
     food_list = get_foods()
 

@@ -1,5 +1,8 @@
-from models.customer import Customer
-from database.connection import get_connection
+from repositories.customer_repository import (
+    create_customer,
+    get_customer_by_phone as get_customer_by_phone_repository,
+    get_customer_by_id as get_customer_by_id_repository
+)
 
 
 def create_customer(name, phone, password_hash):
@@ -67,3 +70,44 @@ def get_customer_by_phone(phone):
 
     finally:
         connection.close()
+
+def get_customer_by_id(customer_id):
+
+    connection = get_connection()
+
+    try:
+        with connection.cursor() as cursor:
+
+            cursor.execute(
+                """
+                SELECT id, name, phone, password_hash, created_at
+                FROM customers
+                WHERE id = %s;
+                """,
+                (customer_id,)
+            )
+
+            customer_data = cursor.fetchone()
+
+        if customer_data is None:
+            return None
+
+        return Customer(
+            customer_data[0],
+            customer_data[1],
+            customer_data[2],
+            customer_data[3],
+            customer_data[4]
+        )
+
+    finally:
+        connection.close()
+
+def get_customer_by_id(customer_id):
+
+    customer = get_customer_by_id_repository(customer_id)
+
+    if customer is None:
+        return None
+
+    return customer
