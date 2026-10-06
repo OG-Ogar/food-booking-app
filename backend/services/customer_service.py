@@ -1,6 +1,7 @@
 from repositories.customer_repository import (
     create_customer,
-    get_customer_by_phone as get_customer_by_phone_repository
+    get_customer_by_phone as get_customer_by_phone_repository,
+    get_customer_by_id as get_customer_by_id_repository
 )
 
 from utils.password import hash_password
@@ -52,3 +53,12 @@ def get_customer_for_login(phone):
         return None, "Customer not found"
 
     return customer, None
+
+def get_customer_by_id(customer_id):
+
+    customer = get_customer_by_id_repository(customer_id)
+
+    if customer is None:
+        return None
+
+    return customer

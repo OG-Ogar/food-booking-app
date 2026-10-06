@@ -1,5 +1,7 @@
-from repositories.food_repository import get_foods
-
+from repositories.food_repository import (
+    get_foods,
+    get_food_by_id as get_food_by_id_repository
+)
 
 def check_availability(food):
 
@@ -55,14 +57,7 @@ def filter_foods_by_category(foods, category):
 
 def get_food_by_id(food_id):
 
-    foods = get_foods()
-
-    for food in foods:
-
-        if food.id == food_id:
-            return food
-
-    return None
+    return get_food_by_id_repository(food_id)
 
 
 def select_food(results, selection):

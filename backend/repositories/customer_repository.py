@@ -1,9 +1,6 @@
-from repositories.customer_repository import (
-    create_customer,
-    get_customer_by_phone as get_customer_by_phone_repository,
-    get_customer_by_id as get_customer_by_id_repository
-)
-
+from models.customer import Customer
+from database.connection import get_connection
+from utils.password import hash_password
 
 def create_customer(name, phone, password_hash):
 
@@ -102,12 +99,3 @@ def get_customer_by_id(customer_id):
 
     finally:
         connection.close()
-
-def get_customer_by_id(customer_id):
-
-    customer = get_customer_by_id_repository(customer_id)
-
-    if customer is None:
-        return None
-
-    return customer

@@ -4,6 +4,7 @@ from repositories.food_repository import get_foods
 from services.food_service import search_food
 from api.routes.auth import router as auth_router
 from api.dependencies import get_current_customer
+from api.routes.bookings import router as bookings_router
 
 
 app = FastAPI(
@@ -13,6 +14,7 @@ app = FastAPI(
 )
 
 app.include_router(auth_router)
+app.include_router(bookings_router)
 
 @app.get("/")
 def home():
@@ -42,7 +44,10 @@ def foods(
 
 
 @app.get("/foods/search")
-def search_foods(name: str):
+def search_foods(
+    name: str,
+    customer_id: int = Depends(get_current_customer)
+):
 
     foods = search_food(name)
 
